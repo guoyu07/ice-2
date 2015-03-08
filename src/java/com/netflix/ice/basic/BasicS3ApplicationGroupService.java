@@ -78,7 +78,6 @@ public class BasicS3ApplicationGroupService implements ApplicationGroupService {
         }
 
         try {
-        	logger.debug(jsonStr);
             JSONObject json = new JSONObject(new JSONTokener(jsonStr));
             Map<String, ApplicationGroup> appgroups = Maps.newHashMap();
             @SuppressWarnings("unchecked")
