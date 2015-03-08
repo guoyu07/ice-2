@@ -34,6 +34,35 @@ grails.project.dependency.resolution = {
         grailsHome()
         grailsCentral()
         mavenCentral()
+		
+		mavenRepo "http://repo.spring.io/milestone/"
+		
+        // Optional custom repository for dependencies.
+        Closure internalRepo = {
+            String repoUrl = 'http://artifacts/ext-releases-local'
+            String artifactPattern = '[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]'
+            String ivyPattern = '[organisation]/[module]/[revision]/[module]-[revision]-ivy.[ext]'
+            URLResolver urlLibResolver = new URLResolver()
+            urlLibResolver.with {
+                name = repoUrl
+                addArtifactPattern("${repoUrl}/${artifactPattern}")
+                addIvyPattern("${repoUrl}/${ivyPattern}")
+                m2compatible = true
+            }
+            resolver urlLibResolver
+
+            String localDir = System.getenv('IVY_LOCAL_REPO') ?: "${System.getProperty('user.home')}/ivy2-local"
+            FileSystemResolver localLibResolver = new FileSystemResolver()
+            localLibResolver.with {
+                name = localDir
+                addArtifactPattern("${localDir}/${artifactPattern}")
+                addIvyPattern("${localDir}/${ivyPattern}")
+            }
+            resolver localLibResolver
+        }
+        // Comment or uncomment the next line to toggle the use of an internal artifacts repository.
+        //internalRepo()
+		
     }
 
     dependencies {
@@ -90,6 +119,9 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
-        build ":tomcat:8.0.20"
+		runtime ":hibernate4:4.3.6.1"
+		build ":tomcat:8.0.20"
+		compile ":spring-security-core:2.0-RC4"
+		compile ":spring-security-ldap:2.0-RC2"
     }
 }
