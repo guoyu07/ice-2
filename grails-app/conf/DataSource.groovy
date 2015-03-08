@@ -21,6 +21,7 @@
 }*/
 hibernate {
     cache.use_second_level_cache = true
+	cache.region.factory_class = 'org.hibernate.cache.ehcache.EhCacheRegionFactory'
     cache.use_query_cache = true
     cache.provider_class = 'org.hibernate.cache.ehcache.EhCacheProvider'
 }
