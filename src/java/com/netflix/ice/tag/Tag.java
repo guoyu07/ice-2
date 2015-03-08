@@ -20,8 +20,14 @@ package com.netflix.ice.tag;
 import java.io.Serializable;
 
 public abstract class Tag implements Comparable<Tag>, Serializable {
-    public static final Tag aggregated = new Tag("aggregated") {
-        @Override
+
+	private static final long serialVersionUID = 1L;
+
+	public static final Tag aggregated = new Tag("aggregated") {
+
+		private static final long serialVersionUID = 1L;
+
+		@Override
         public int compareTo(Tag t) {
             return this == t ? 0 : -1;
         }

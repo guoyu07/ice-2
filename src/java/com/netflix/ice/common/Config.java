@@ -18,6 +18,7 @@
 package com.netflix.ice.common;
 
 import com.amazonaws.auth.AWSCredentialsProvider;
+
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
@@ -42,7 +43,8 @@ public abstract class Config {
      * @param productService (required)
      * @param resourceService (optional)
      */
-    public Config(
+    @SuppressWarnings("unused")
+	public Config(
             Properties properties,
             AWSCredentialsProvider credentialsProvider,
             AccountService accountService,

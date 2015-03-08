@@ -24,6 +24,7 @@ import com.netflix.ice.common.AwsUtils;
 import com.netflix.ice.reader.ApplicationGroup;
 import com.netflix.ice.reader.ApplicationGroupService;
 import com.netflix.ice.reader.ReaderConfig;
+
 import org.apache.commons.io.IOUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -79,10 +80,11 @@ public class BasicS3ApplicationGroupService implements ApplicationGroupService {
         try {
             JSONObject json = new JSONObject(new JSONTokener(jsonStr));
             Map<String, ApplicationGroup> appgroups = Maps.newHashMap();
-            Iterator<String> keys = json.keys();
+            @SuppressWarnings("unchecked")
+			Iterator<String> keys = json.keys();
             while (keys.hasNext()) {
                 String key = keys.next();
-                String str = json.getString(key);
+                String str = json.optString(key);
                 appgroups.put(key, new ApplicationGroup(str));
             }
 

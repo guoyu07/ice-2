@@ -31,7 +31,7 @@ import com.netflix.ice.processor.ReservationService;
 import com.netflix.ice.tag.*;
 import com.netflix.ice.tag.Region;
 import org.apache.commons.lang.StringUtils;
-import org.joda.time.DateMidnight;
+import org.joda.time.LocalDateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,7 +47,7 @@ public class BasicReservationService extends Poller implements ReservationServic
     protected ReservationPeriod term;
     protected ReservationUtilization defaultUtilization;
     protected Map<ReservationUtilization, File> files;
-    protected Long futureMillis = new DateMidnight().withYearOfCentury(99).getMillis();
+    protected Long futureMillis = new LocalDateTime().withYearOfCentury(99).toDateTime().getMillis();
 
     protected static Map<String, String> instanceTypes = Maps.newHashMap();
     protected static Map<String, String> instanceSizes = Maps.newHashMap();
@@ -136,7 +136,7 @@ public class BasicReservationService extends Poller implements ReservationServic
     }
 
     private void pollAPI() throws Exception {
-        long currentTime = new DateMidnight().getMillis();
+        long currentTime = new LocalDateTime().withYearOfCentury(99).toDateTime().getMillis();
 
         DescribeReservedInstancesOfferingsRequest req =  new DescribeReservedInstancesOfferingsRequest()
                 .withFilters(new com.amazonaws.services.ec2.model.Filter().withName("marketplace").withValues("false"));

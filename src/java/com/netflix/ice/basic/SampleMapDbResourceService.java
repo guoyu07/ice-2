@@ -18,26 +18,25 @@
 package com.netflix.ice.basic;
 
 import com.google.common.collect.Lists;
-import com.netflix.ice.common.ProductService;
 import com.netflix.ice.common.ResourceService;
 import com.netflix.ice.processor.ProcessorConfig;
 import com.netflix.ice.tag.Account;
 import com.netflix.ice.tag.Product;
 import com.netflix.ice.tag.Region;
+
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-/**
- *
- */
 public class SampleMapDbResourceService extends ResourceService {
 
     public static final String UNKNOWN = "unknown";
-    private static final Logger logger = LoggerFactory.getLogger(SampleMapDbResourceService.class);
-    private static List<List<Product>> productsWithResources = Lists.<List<Product>>newArrayList(
+    @SuppressWarnings("unused")
+	private static final Logger logger = LoggerFactory.getLogger(SampleMapDbResourceService.class);
+    @SuppressWarnings("unchecked")
+	private static List<List<Product>> productsWithResources = Lists.<List<Product>>newArrayList(
             Lists.newArrayList(Product.ec2, Product.ec2_instance, Product.ebs),
             Lists.newArrayList(Product.rds),
             Lists.newArrayList(Product.s3));

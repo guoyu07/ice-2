@@ -19,7 +19,9 @@ package com.netflix.ice.tag;
 
 public class ApplicationGroup extends Tag {
 
-    public ApplicationGroup(String name) {
+	private static final long serialVersionUID = 1L;
+
+	public ApplicationGroup(String name) {
         super(name);
     }
 }

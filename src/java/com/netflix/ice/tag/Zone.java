@@ -26,7 +26,9 @@ import java.util.concurrent.ConcurrentMap;
 
 public class Zone extends Tag {
 
-    public final Region region;
+	private static final long serialVersionUID = 1L;
+	
+	public final Region region;
 
     private Zone (Region region, String name) {
         super(name);

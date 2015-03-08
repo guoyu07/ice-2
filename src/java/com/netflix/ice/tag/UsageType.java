@@ -29,7 +29,8 @@ import java.util.List;
 import java.util.concurrent.ConcurrentMap;
 
 public class UsageType extends Tag {
-    private static final Logger logger = LoggerFactory.getLogger(Operation.class);
+	private static final long serialVersionUID = 1L;
+	private static final Logger logger = LoggerFactory.getLogger(Operation.class);
     public final String unit;
 
     private UsageType (String name, String unit) {

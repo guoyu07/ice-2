@@ -30,7 +30,6 @@ import com.netflix.ice.common.*;
 import com.netflix.ice.tag.Account;
 import com.netflix.ice.tag.Operation;
 import com.netflix.ice.tag.Product;
-import com.netflix.ice.tag.Zone;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream;

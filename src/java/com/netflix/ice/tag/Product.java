@@ -18,7 +18,8 @@
 package com.netflix.ice.tag;
 
 public class Product extends Tag {
-    public static final Product cloudfront = new Product("cloudfront");
+	private static final long serialVersionUID = 1L;
+	public static final Product cloudfront = new Product("cloudfront");
     public static final Product cloudhsm = new Product("cloudhsm");
     public static final Product cloudwatch = new Product("cloudwatch");
     public static final Product data_pipeline = new Product("data_pipeline");

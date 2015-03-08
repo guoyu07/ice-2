@@ -139,7 +139,8 @@ public class TagLists {
         return result;
     }
 
-    public boolean contains(Tag tag, TagType groupBy) {
+    @SuppressWarnings("incomplete-switch")
+	public boolean contains(Tag tag, TagType groupBy) {
         boolean result = true;
 
         switch (groupBy) {
@@ -168,7 +169,8 @@ public class TagLists {
         return result;
     }
 
-    public TagLists getTagLists(Tag tag, TagType groupBy) {
+    @SuppressWarnings("incomplete-switch")
+	public TagLists getTagLists(Tag tag, TagType groupBy) {
         TagLists result = null;
 
         switch (groupBy) {

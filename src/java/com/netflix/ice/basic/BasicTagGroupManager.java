@@ -28,6 +28,7 @@ import com.netflix.ice.reader.ReaderConfig;
 import com.netflix.ice.reader.TagGroupManager;
 import com.netflix.ice.reader.TagLists;
 import com.netflix.ice.tag.*;
+
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.Interval;
@@ -185,9 +186,6 @@ public class BasicTagGroupManager extends Poller implements TagGroupManager {
         Set<TagGroup> tagGroupsInRange = getTagGroupsInRange(getMonthMillis(interval));
 
         for (TagGroup tagGroup: tagGroupsInRange) {
-            if (tagGroup.product == Product.emr || tagGroup.product == Product.redshift) {
-                int iii = 0;
-            }
             if (tagLists.contains(tagGroup))
                 result.add(tagGroup.operation);
         }
@@ -251,7 +249,8 @@ public class BasicTagGroupManager extends Poller implements TagGroupManager {
         return totalInterval == null ? null : totalInterval.overlap(interval);
     }
 
-    public Map<Tag, TagLists> getTagListsMap(Interval interval, TagLists tagLists, TagType groupBy, boolean forReservation) {
+    @SuppressWarnings("incomplete-switch")
+	public Map<Tag, TagLists> getTagListsMap(Interval interval, TagLists tagLists, TagType groupBy, boolean forReservation) {
         Map<Tag, TagLists> result = Maps.newHashMap();
 
         TagLists tagListsForTag = tagLists;

@@ -22,7 +22,7 @@ import com.netflix.ice.common.*;
 import com.netflix.ice.processor.*;
 import com.netflix.ice.tag.*;
 import org.apache.commons.lang.StringUtils;
-import org.joda.time.DateMidnight;
+import org.joda.time.LocalDateTime;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.slf4j.Logger;
@@ -44,7 +44,6 @@ public class BasicLineItemProcessor implements LineItemProcessor {
     private int usageQuantityIndex;
     private int startTimeIndex;
     private int endTimeIndex;
-    private int rateIndex;
     private int costIndex;
     private int resourceIndex;
 
@@ -68,7 +67,6 @@ public class BasicLineItemProcessor implements LineItemProcessor {
         usageQuantityIndex = 16 + (withTags ? 0 : -1);
         startTimeIndex = 14 + (withTags ? 0 : -1);
         endTimeIndex = 15 + (withTags ? 0 : -1);
-        rateIndex = 19 + (withTags ? 0 : -1) + (hasBlendedCost ? 0 : -2);
         costIndex = 20 + (withTags ? 0 : -1) + (hasBlendedCost ? 0 : -2);
         resourceIndex = 21 + (withTags ? 0 : -1) + (hasBlendedCost ? 0 : -2);
 
@@ -159,8 +157,8 @@ public class BasicLineItemProcessor implements LineItemProcessor {
         ReadWriteData costDataOfProduct = costDataByProduct.get(product);
 
         if (result == Result.daily) {
-            DateMidnight dm = new DateMidnight(millisStart, DateTimeZone.UTC);
-            millisStart = dm.getMillis();
+            LocalDateTime dm = new LocalDateTime(millisStart, DateTimeZone.UTC);
+            millisStart = dm.toDateTime().getMillis();
             startIndex = (int)((millisStart - startMilli)/ AwsUtils.hourMillis);
             endIndex = startIndex + 24;
         }

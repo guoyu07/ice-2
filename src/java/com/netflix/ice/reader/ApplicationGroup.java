@@ -19,6 +19,7 @@ package com.netflix.ice.reader;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,7 +56,8 @@ public class ApplicationGroup {
         name = json.getString("name");
         owner = json.getString("owner");
         json = json.getJSONObject("data");
-        Iterator<String> keys = json.keys();
+        @SuppressWarnings("unchecked")
+		Iterator<String> keys = json.keys();
         while (keys.hasNext()) {
             String key = keys.next();
             JSONArray jsonArray = json.getJSONArray(key);
