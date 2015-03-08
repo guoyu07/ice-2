@@ -121,7 +121,7 @@ grails.project.dependency.resolution = {
     plugins {
 		runtime ":hibernate4:4.3.6.1"
 		build ":tomcat:8.0.20"
-		compile ":spring-security-core:2.0-RC4"
-		compile ":spring-security-ldap:2.0-RC2"
+		//compile ":spring-security-core:2.0-RC4"
+		//compile ":spring-security-ldap:2.0-RC2"
     }
 }
