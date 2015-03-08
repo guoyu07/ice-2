@@ -406,7 +406,7 @@ class DashboardController {
         List<ResourceGroup> resourceGroups = ResourceGroup.getResourceGroups(listParams(query, "resourceGroup"));
         DateTime end = query.has("spans") ? dayFormatter.parseDateTime(query.getString("end")) : dateFormatter.parseDateTime(query.getString("end"));
         ConsolidateType consolidateType = ConsolidateType.valueOf(query.getString("consolidate"));
-        ApplicationGroup appgroup = query.has("appgroup") ? new ApplicationGroup(query.getString("appgroup")) : null;
+        ApplicationGroup appgroup = query.has("appgroup") ? new ApplicationGroup(query.getJSONObject("appgroup").toString()) : null;
         boolean forReservation = query.has("forReservation") ? query.getBoolean("forReservation") : false;
         boolean showZones = query.has("showZones") ? query.getBoolean("showZones") : false;
         boolean showResourceGroups = query.has("showResourceGroups") ? query.getBoolean("showResourceGroups") : false;

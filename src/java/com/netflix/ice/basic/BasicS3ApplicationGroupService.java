@@ -84,7 +84,7 @@ public class BasicS3ApplicationGroupService implements ApplicationGroupService {
 			Iterator<String> keys = json.keys();
             while (keys.hasNext()) {
                 String key = keys.next();
-                String str = json.getString(key);
+                String str = json.getJSONObject(key).toString();
                 appgroups.put(key, new ApplicationGroup(str));
             }
 

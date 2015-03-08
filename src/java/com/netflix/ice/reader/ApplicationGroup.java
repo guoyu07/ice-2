@@ -63,7 +63,7 @@ public class ApplicationGroup {
             JSONArray jsonArray = json.getJSONArray(key);
             List<String> values = Lists.newArrayList();
             for (int i = 0; i < jsonArray.length(); i++)
-                values.add(jsonArray.getString(i));
+                values.add(jsonArray.get(i).toString());
             data.put(key, values);
         }
     }
