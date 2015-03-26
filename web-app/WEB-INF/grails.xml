@@ -35,7 +35,6 @@
     <resource>com.netflix.ice.DashboardController</resource>
   </resources>
   <plugins>
-    <plugin>HibernateGrailsPlugin</plugin>
     <plugin>SpringSecurityCoreGrailsPlugin</plugin>
     <plugin>SpringSecurityLdapGrailsPlugin</plugin>
   </plugins>
